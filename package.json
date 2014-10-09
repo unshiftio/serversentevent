@@ -1,0 +1,48 @@
+{
+  "name": "serversentevent",
+  "version": "0.0.0",
+  "description": "Server-Sent Events API which also supports legacy addEventStream",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec --ui bdd test.js"
+  },
+  "browser": "sse.js",
+  "keywords": [
+    "AJAX",
+    "ES",
+    "Event Source",
+    "Event",
+    "Event-Source",
+    "EventSource",
+    "Events",
+    "SSE",
+    "Send",
+    "Sent",
+    "Server",
+    "Server-Send Events",
+    "Server-Sent Events",
+    "ServerSend Events",
+    "ServerSend-Events",
+    "ServerSendEvents",
+    "ServerSent Events",
+    "ServerSent-Events",
+    "ServerSentEvents",
+    "Source",
+    "addEvent",
+    "addEventStream",
+    "comet",
+    "http",
+    "https",
+    "push",
+    "real-time",
+    "realtime",
+    "stream",
+    "streaming"
+  ],
+  "author": "Arnout Kazemier",
+  "license": "MIT",
+  "dependencies": {
+    "emits": "1.0.x",
+    "eventemitter3": "0.1.x"
+  }
+}
