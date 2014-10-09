@@ -1,6 +1,9 @@
 'use strict';
 
-var parse = require('url').parse;
+var zipline = require('zipline')
+  , parse = require('url-parse')
+  , zlib = require('zlib')
+  , vary = require('vary');
 
 /**
  * Attempt to detect if we're dealing with a legacy implementation of Opera
@@ -17,6 +20,23 @@ function legacy(query, headers) {
 }
 
 /**
+ * Either return a GZIP or the response.
+ *
+ * @param {String} encoding The encoding that we should use for the data stream.
+ * @param {Response} res HTTP response which should do things.
+ * @returns {Stream}
+ * @api private
+ */
+function compress(encoding, res) {
+  switch (encoding) {
+    case 'deflate': return res.pipe(zlib.createDeflate());
+    case 'raw': return res.pipe(zlib.createDeflateRaw());
+    case 'gzip': return res.pipe(zlib.createGzip());
+    default: return res;
+  }
+}
+
+/**
  * A Server-Sent-Events.
  *
  * @TODO support GZIP
@@ -30,16 +50,23 @@ function SSE(req, res, options) {
   if (!(this instanceof SSE)) return new SSE(req, res, options);
   options = options || {};
 
-  this.id = 0;
-  this.res = res;
-  this.lastEventId = 0;
+  var zipable = zipline(req);
+
+  this.id = 0;                        // The current message id.
+  this.lastEventId = null;            // LastEventId received from connection.
+  this.encoding = zipable;            // GZIP encoding to use.
+  this.res = compress(zipable, res);  // Reference to the HTTP response.
+
   this.url = parse(req.url, true);
   this.numbering = options.numbering === true;
   this.legacy = legacy(this.url.query, res.headers);
 
-  if (!options.manual) {
-    this.accept(req);
-  }
+  //
+  // Nuke the encoding if we couldn't compress the outgoing data using some sort
+  // of gzip.
+  //
+  if (this.res === res) this.encoding = null;
+  if (!options.manual) this.accept(req);
 }
 
 /**
@@ -61,8 +88,15 @@ SSE.prototype.accept = function accept(req) {
     : 'text/event-stream'
   );
 
-  if (!req.headers['last-event-id']) return;
+  //
+  // Check if we need to add compression headers as we're using GZIP.
+  //
+  if (this.encoding) {
+    this.res.setHeader('Content-Encoding', this.encoding);
+    vary(this.res, 'Content-Encoding');
+  }
 
+  if (!req.headers['last-event-id']) return;
   this.lastEventId = +req.headers['last-event-id'];
 };
 

@@ -43,6 +43,9 @@
   "license": "MIT",
   "dependencies": {
     "emits": "1.0.x",
-    "eventemitter3": "0.1.x"
+    "eventemitter3": "0.1.x",
+    "url-parse": "0.0.1",
+    "vary": "1.0.0",
+    "zipline": "0.0.0"
   }
 }
