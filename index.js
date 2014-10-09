@@ -80,10 +80,11 @@ function SSE(req, res, options) {
 SSE.prototype.accept = function accept(req) {
   this.res.statusCode = 200;
 
-  this.res.setHeader('Transfer-Encoding', 'chunked');
-  this.res.setHeader('Cache-Control', 'no-cache');
-  this.res.setHeader('Connection', 'keep-alive');
-  this.res.setHeader('Content-Type', this.legacy
+  this.res.removeHeader('Content-Length');              // We're streaming
+  this.res.setHeader('Transfer-Encoding', 'chunked');   // Chunked encoding
+  this.res.setHeader('Cache-Control', 'no-cache');      // Don't cache us.
+  this.res.setHeader('Connection', 'keep-alive');       // Keep shit alive
+  this.res.setHeader('Content-Type', this.legacy        // Support legacy types
     ? 'text/x-dom-event-stream'
     : 'text/event-stream'
   );
