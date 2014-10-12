@@ -193,6 +193,14 @@ ServerSentEvents.supported = ServerSentEvents.legacy || 'EventSource' in window;
 ServerSentEvents.crossdomain = 'EventSource' in window
   && 'withCredentials' in EventSource.prototype;
 
+/**
+ * Is binary supported.
+ *
+ * @type {Boolean}
+ * @public
+ */
+ServerSentEvents.binary = false;
+
 //
 // Expose the module interface.
 //
