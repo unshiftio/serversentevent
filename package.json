@@ -47,5 +47,9 @@
     "url-parse": "0.0.1",
     "vary": "1.0.0",
     "zipline": "0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unshiftio/serversentevent"
   }
 }
