@@ -39,7 +39,6 @@ function compress(encoding, res) {
 /**
  * A Server-Sent-Events.
  *
- * @TODO support GZIP
  * @constructor
  * @param {Request} req Incoming HTTP request.
  * @param {Response} res Outgoing HTTP response.
@@ -47,7 +46,7 @@ function compress(encoding, res) {
  * @api public
  */
 function SSE(req, res, options) {
-  if (!(this instanceof SSE)) return new SSE(req, res, options);
+  if (!this) return new SSE(req, res, options);
   options = options || {};
 
   var zipable = zipline(req);
