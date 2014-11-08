@@ -51,5 +51,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/unshiftio/serversentevent"
+  },
+  "devDependencies": {
+    "assume": "0.0.x",
+    "eventsource": "0.1.x",
+    "istanbul": "0.3.x",
+    "mocha": "1.21.x",
+    "pre-commit": "0.0.x"
   }
 }
