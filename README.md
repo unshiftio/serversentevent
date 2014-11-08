@@ -1,4 +1,6 @@
-# serversent-event
+# serversentevent
+
+[![Made by unshift](https://img.shields.io/badge/made%20by-unshift-00ffcc.svg?style=flat-square)](http://unshift.io)[![Version npm](http://img.shields.io/npm/v/serversentevent.svg?style=flat-square)](http://browsenpm.org/package/serversentevent)[![Build Status](http://img.shields.io/travis/unshiftio/serversentevent/master.svg?style=flat-square)](https://travis-ci.org/unshiftio/serversentevent)[![Dependencies](https://img.shields.io/david/unshiftio/serversentevent.svg?style=flat-square)](https://david-dm.org/unshiftio/serversentevent)[![Coverage Status](http://img.shields.io/coveralls/unshiftio/serversentevent/master.svg?style=flat-square)](https://coveralls.io/r/unshiftio/serversentevent?branch=master)[![IRC channel](http://img.shields.io/badge/IRC-irc.freenode.net%23unshift-00a8ff.svg?style=flat-square)](http://webchat.freenode.net/?channels=unshift)
 
 **YES, YET ANOTHER SERVER-SENT EVENT MODULE, HERE'S WHY**: Server-Sent Events is
 one of the most under estimated real-time technologies and as a result of this
