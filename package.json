@@ -42,21 +42,21 @@
   "author": "Arnout Kazemier",
   "license": "MIT",
   "dependencies": {
-    "emits": "1.0.x",
-    "eventemitter3": "0.1.x",
-    "url-parse": "0.0.1",
-    "vary": "1.0.0",
-    "zipline": "0.0.0"
+    "emits": "~3.0.0",
+    "eventemitter3": "~2.0.2",
+    "url-parse": "1.1.7",
+    "vary": "1.1.0",
+    "zipline": "1.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/unshiftio/serversentevent"
   },
   "devDependencies": {
-    "assume": "0.0.x",
-    "eventsource": "0.1.x",
-    "istanbul": "0.3.x",
-    "mocha": "1.21.x",
-    "pre-commit": "0.0.x"
+    "assume": "~1.4.1",
+    "eventsource": "~0.2.1",
+    "istanbul": "~0.4.5",
+    "mocha": "~3.1.2",
+    "pre-commit": "~1.1.3"
   }
 }
